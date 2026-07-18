@@ -430,6 +430,16 @@
             object-position: center;
         }
 
+        .feature-image-full {
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .feature-card-logo .feature-image-full {
+            object-position: center 44%;
+            transform: scale(1.04);
+        }
+
         .snack-boy-scene {
             position: absolute;
             inset: 0;
@@ -446,12 +456,12 @@
 
         .snack-boy {
             position: absolute;
-            left: -104px;
-            bottom: 8px;
-            width: 92px;
-            height: 92px;
-            border: 3px solid rgba(255, 255, 255, 0.92);
-            border-radius: 28px;
+            left: -112px;
+            bottom: 10px;
+            width: 104px;
+            height: 104px;
+            border: 3px solid rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
             background: #fff8ea;
             box-shadow: 0 14px 24px rgba(93, 64, 55, 0.22);
             transform-origin: 50% 100%;
@@ -468,7 +478,9 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scale(1.08);
+            object-position: center;
+            filter: saturate(1.05) contrast(1.04);
+            transform: none;
         }
 
         .snack-boy-head {
@@ -595,10 +607,11 @@
 
         .snack-fries-pack {
             position: absolute;
-            right: -8px;
-            top: 60px;
-            width: 21px;
-            height: 23px;
+            right: 8px;
+            top: 72px;
+            width: 26px;
+            height: 29px;
+            z-index: 2;
             border-radius: 4px 4px 7px 7px;
             background: linear-gradient(145deg, #D9574A, #FFB451);
             transform: rotate(-12deg);
@@ -610,16 +623,25 @@
             position: absolute;
             left: 4px;
             top: -10px;
-            width: 3px;
-            height: 13px;
+            width: 4px;
+            height: 14px;
             border-radius: 3px;
             background: #F7C347;
-            box-shadow: 5px -2px 0 #F7C347, 10px 0 0 #F7C347;
+            box-shadow: 6px -2px 0 #F7C347, 12px 0 0 #F7C347;
         }
 
         .feature-polaroid:hover .snack-fries-pack,
         .feature-polaroid.snack-boy-active .snack-fries-pack {
             animation: snackFriesToMouth 3.5s ease-in-out both;
+        }
+
+        .feature-polaroid.no-fries-scene .snack-fries-pack {
+            display: none;
+        }
+
+        .feature-polaroid.no-fries-scene:hover .snack-boy-arm.right,
+        .feature-polaroid.no-fries-scene.snack-boy-active .snack-boy-arm.right {
+            animation: none;
         }
 
         .snack-boy-leg {
@@ -728,12 +750,12 @@
             }
 
             48% {
-                transform: translateX(130px) translateY(-3px) scale(0.78) rotate(2deg);
+                transform: translateX(134px) translateY(-3px) scale(0.74) rotate(2deg);
             }
 
             68%,
             100% {
-                transform: translateX(130px) translateY(0) scale(0.78) rotate(0deg);
+                transform: translateX(134px) translateY(0) scale(0.74) rotate(0deg);
             }
         }
 
@@ -1576,7 +1598,7 @@
         .tfi-safety-panel {
             position: relative;
             overflow: hidden;
-            max-width: 820px;
+            max-width: 980px;
             margin: 0 auto;
             border: 1px solid rgba(230, 168, 99, 0.28);
             border-radius: 8px;
@@ -1603,7 +1625,16 @@
         .tfi-safety-hero {
             position: relative;
             z-index: 1;
-            text-align: center;
+            text-align: left;
+        }
+
+        .tfi-safety-layout {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+            gap: 24px;
+            align-items: center;
         }
 
         .tfi-safety-hero h2,
@@ -1656,6 +1687,30 @@
             background: #C64F4F;
             color: #fff;
             letter-spacing: 0;
+        }
+
+        .tfi-safety-promise {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tfi-safety-promise span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 3px solid rgba(198, 79, 79, 0.62);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.72);
+            padding: 11px 13px;
+            color: #5D4037;
+            font-size: 0.88rem;
+            font-weight: 800;
+            box-shadow: 0 8px 18px rgba(93, 64, 55, 0.055);
+        }
+
+        .tfi-safety-promise i {
+            color: #C64F4F;
         }
 
         .tfi-safety-list {
@@ -1719,6 +1774,20 @@
             letter-spacing: 0.08em;
         }
 
+        .tfi-safety-list strong {
+            display: block;
+            color: #3d332d;
+            font-size: 0.92rem;
+            font-weight: 900;
+        }
+
+        .tfi-safety-list p {
+            margin-top: 2px;
+            color: rgba(93, 64, 55, 0.78);
+            font-size: 0.78rem;
+            line-height: 1.35;
+        }
+
         .tfi-safety-list i {
             display: inline-flex;
             width: 34px;
@@ -1734,10 +1803,10 @@
 
         .tfi-safety-badges {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 10px;
-            margin: 18px auto 0;
-            max-width: 620px;
+            margin: 20px auto 0;
+            max-width: none;
         }
 
         .tfi-safety-badges span {
@@ -2204,6 +2273,20 @@
                 grid-template-columns: 1fr;
             }
 
+            .tfi-safety-layout {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .tfi-safety-hero {
+                text-align: center;
+            }
+
+            .tfi-safety-promise span {
+                justify-content: center;
+                text-align: left;
+            }
+
             .tfi-map-preview {
                 min-height: 260px;
             }
@@ -2267,26 +2350,11 @@
             color: #C64F4F;
         }
 
-        #mobile-menu-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            padding: 0;
-            line-height: 1;
-            z-index: 10013;
-        }
-
         #billing-menu-toggle {
             display: none;
         }
 
         body.billing-open #header {
-            display: none;
-        }
-
-        body.billing-open #mobile-menu-toggle {
             display: none;
         }
 
@@ -2298,7 +2366,6 @@
             display: flex;
         }
 
-        #mobile-menu-toggle i,
         #billing-menu-toggle i {
             display: block;
             line-height: 1;
@@ -2466,25 +2533,26 @@
                 padding: 10px;
             }
 
+            .hero-section {
+                box-sizing: border-box;
+                width: 100%;
+                min-height: auto;
+                justify-content: flex-start;
+                padding: 118px 18px 32px;
+            }
+
             .site-header-shell {
                 box-sizing: border-box;
                 max-width: calc(100vw - 20px);
                 width: 100%;
                 border-radius: 18px;
                 padding: 12px;
-                align-items: flex-start;
+                align-items: center;
                 position: relative;
             }
 
             #instagram-scanner-open {
                 display: none;
-            }
-
-            #mobile-menu-toggle {
-                position: fixed;
-                left: min(330px, calc(100vw - 58px));
-                right: auto;
-                top: 18px;
             }
 
             body.billing-open .billing-page-header {
@@ -2507,27 +2575,88 @@
                 flex-basis: 38px;
             }
 
-            .mobile-hero-title {
-                max-width: 330px;
+            .hero-section > .max-w-4xl {
+                box-sizing: border-box;
+                width: 100%;
+                max-width: min(360px, 100%);
                 margin-left: auto;
                 margin-right: auto;
-                font-size: 2.2rem;
-                line-height: 1.25;
+                padding-left: 0;
+                padding-right: 0;
             }
 
-            .mobile-hero-title .hero-highlight {
+            .hero-section .relative.inline-block {
+                display: block;
+                margin-top: 18px;
+                margin-bottom: 34px;
+                text-align: center;
+            }
+
+            .hero-section .absolute.-top-10.-right-10 {
+                right: 18px;
+            }
+
+            .hero-section .mobile-hero-title {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 2.05rem;
+                line-height: 1.22;
+                text-align: center;
+            }
+
+            .hero-section .mobile-hero-title .hero-highlight {
                 margin: 6px 0;
             }
 
-            .mobile-hero-copy {
-                max-width: 330px;
-                padding: 20px 16px;
-                font-size: 1rem;
+            .hero-section .hero-script {
+                display: block;
+                margin-top: 4px;
+                white-space: nowrap;
+            }
+
+            .hero-section .mobile-hero-copy {
+                box-sizing: border-box;
+                width: 100%;
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 22px 18px;
+                font-size: 0.98rem;
+                line-height: 1.8;
+                text-align: center;
                 overflow-wrap: break-word;
             }
 
-            .mobile-hero-copy br {
+            .hero-section .mobile-hero-copy br {
                 display: none;
+            }
+
+            .hero-section .hero-actions {
+                box-sizing: border-box;
+                display: grid;
+                width: min(100%, 310px);
+                max-width: 310px;
+                margin-left: auto;
+                margin-right: auto;
+                justify-content: center;
+                justify-items: center;
+                gap: 12px;
+            }
+
+            .hero-section .hero-actions a {
+                width: 100%;
+                max-width: 310px;
+                min-height: 54px;
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .hero-section .hero-feedback {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
             }
 
             .billing-dialog-shell {
@@ -2690,11 +2819,6 @@
                         aria-label="Show Instagram scanner">
                         <i class="fab fa-instagram"></i>
                     </button>
-                    <button type="button" id="mobile-menu-toggle"
-                        class="bg-ghibli-green text-white w-10 h-10 rounded-full items-center justify-center hover:bg-ghibli-red transition jelly-hover shadow-lg"
-                        aria-label="Open menu" aria-expanded="false" aria-controls="side-menu">
-                        <i class="fas fa-bars"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -2710,7 +2834,7 @@
                 </span>
                 <div>
                     <p class="font-serif text-xl font-bold text-ghibli-dark tracking-widest">TFI.Co</p>
-                    <p class="text-xs font-bold uppercase tracking-widest text-ghibli-green">Menu</p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-ghibli-green">Explore TFI</p>
                 </div>
             </div>
             <button type="button" id="side-menu-close"
@@ -2753,15 +2877,11 @@
                 <i class="fab fa-instagram w-5 text-center"></i>
                 Instagram QR
             </button>
-            <a href="./materials/tfi_cinematic_premium_menu.pdf" download class="side-menu-link">
-                <i class="fas fa-download w-5 text-center"></i>
-                Download Menu
-            </a>
         </nav>
     </aside>
 
     <!-- Hero Section -->
-    <section class="min-h-[82vh] pt-24 pb-6 flex flex-col items-center justify-center relative overflow-hidden">
+    <section class="hero-section min-h-[82vh] pt-24 pb-6 flex flex-col items-center justify-center relative overflow-hidden">
         <!-- Background Elements (Parallax Clouds) -->
         <div class="absolute top-20 left-10 opacity-30 animate-float" style="animation-duration: 8s;">
             <i class="fas fa-cloud text-6xl text-white"></i>
@@ -2788,19 +2908,25 @@
                 Unforgettable flavours. A cinematic experience like never before.
             </p>
 
-            <div class="mb-12 flex flex-col sm:flex-row justify-center gap-3">
+            <div class="hero-actions mb-12 flex flex-col sm:flex-row justify-center gap-3">
                 <a href="./materials/tfi_cinematic_premium_menu.pdf" download
-                    class="inline-flex items-center justify-center gap-2 bg-ghibli-brown text-white font-bold py-3 px-7 rounded-full shadow-lg hover:bg-ghibli-red hover:shadow-xl transition transform hover:-translate-y-1 jelly-hover">
+                    class="inline-flex items-center justify-center gap-2 border border-[#7A4328]/20 bg-gradient-to-r from-[#8B5E3C] to-[#A0643E] text-white font-bold py-3 px-7 rounded-full shadow-[0_12px_24px_rgba(139,94,60,0.24)] hover:from-[#A0643E] hover:to-[#C64F4F] hover:shadow-xl transition transform hover:-translate-y-1 jelly-hover">
                     <i class="fas fa-download"></i>
-                    Download Menu
+                    Save Menu
                 </a>
                 <a href="#gallery"
-                    class="inline-flex items-center justify-center gap-2 bg-white/80 text-ghibli-brown font-bold py-3 px-7 rounded-full shadow-md hover:text-ghibli-red hover:shadow-lg transition transform hover:-translate-y-1 jelly-hover">
+                    class="inline-flex items-center justify-center gap-2 border border-[#E6A863]/55 bg-gradient-to-r from-white to-[#FFF4D8] text-ghibli-brown font-bold py-3 px-7 rounded-full shadow-[0_10px_22px_rgba(230,168,99,0.20)] hover:border-[#C64F4F]/45 hover:text-ghibli-red hover:shadow-xl transition transform hover:-translate-y-1 jelly-hover">
                     <i class="fas fa-utensils"></i>
                     View Menu
                 </a>
+                <button type="button" id="hero-menu-open"
+                    class="inline-flex items-center justify-center gap-2 border border-[#A83E3E]/20 bg-gradient-to-r from-[#C64F4F] to-[#D8734A] text-white font-bold py-3 px-7 rounded-full shadow-[0_12px_24px_rgba(198,79,79,0.24)] hover:from-[#B74343] hover:to-[#8B5E3C] hover:shadow-xl transition transform hover:-translate-y-1 jelly-hover box-border"
+                    aria-label="Open Explore TFI" aria-expanded="false" aria-controls="side-menu">
+                    <i class="fas fa-route"></i>
+                    Explore TFI
+                </button>
             </div>
-            <p class="-mt-7 mb-10 font-sans text-sm text-ghibli-brown">
+            <p class="hero-feedback -mt-7 mb-10 font-sans text-sm text-ghibli-brown">
                 Loved your bite?
                 <button type="button" data-open-feedback
                     class="font-bold text-ghibli-red underline decoration-ghibli-red/30 underline-offset-4 transition hover:text-ghibli-dark">
@@ -2810,10 +2936,10 @@
 
             <!-- Main Visual: Baking Collage -->
             <div
-                class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto transform rotate-1 hover:rotate-0 transition duration-700">
+                class="hero-collage grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto transform rotate-1 hover:rotate-0 transition duration-700">
                 <!-- Image 1 -->
                 <div
-                    class="feature-polaroid transform rotate-2 scale-[0.94] hover:scale-[0.99] hover:-translate-y-1 transition duration-500 cursor-pointer jelly-hover">
+                    class="feature-polaroid no-fries-scene transform rotate-2 scale-[0.94] hover:scale-[0.99] hover:-translate-y-1 transition duration-500 cursor-pointer jelly-hover">
                     <div class="feature-image-frame">
                         <img src="./materials/one.png" class="feature-image" alt="TFI.Co featured food">
                         <div
@@ -2824,7 +2950,7 @@
                 </div>
                 <!-- Image 2 (Central) -->
                 <div
-                    class="feature-polaroid transform -rotate-2 scale-[1.04] z-10 hover:scale-[1.08] hover:-translate-y-1 transition duration-500 cursor-pointer jelly-hover">
+                    class="feature-polaroid no-fries-scene transform -rotate-2 scale-[1.04] z-10 hover:scale-[1.08] hover:-translate-y-1 transition duration-500 cursor-pointer jelly-hover">
                     <div class="feature-image-frame">
                         <img src="./materials/two.png" class="feature-image" alt="TFI.Co featured food">
                         <!-- <span class="absolute bottom-2 right-2 text-white text-xs font-mono">My Favorite</span> -->
@@ -2832,9 +2958,17 @@
                 </div>
                 <!-- Image 3 -->
                 <div
-                    class="feature-polaroid transform rotate-1 md:mt-3 hover:scale-105 hover:-translate-y-1 transition duration-500 cursor-pointer jelly-hover">
+                    class="feature-polaroid no-fries-scene transform rotate-1 hover:scale-105 hover:-translate-y-1 transition duration-500 cursor-pointer jelly-hover">
                     <div class="feature-image-frame">
                         <img src="./materials/three.png" class="feature-image" alt="TFI.Co featured food">
+                    </div>
+                </div>
+                <!-- Image 4 -->
+                <div
+                    class="feature-polaroid feature-card-logo no-fries-scene transform -rotate-2 scale-[0.94] hover:scale-[0.99] hover:-translate-y-1 transition duration-500 cursor-pointer jelly-hover">
+                    <div class="feature-image-frame">
+                        <img src="./materials/four.png" class="feature-image feature-image-full"
+                            alt="TFI.Co fries and waffle logo artwork">
                     </div>
                 </div>
             </div>
@@ -3140,19 +3274,58 @@
     <section id="safety" class="py-8 md:py-10">
         <div class="max-w-6xl mx-auto px-4">
             <div class="tfi-safety-panel p-5 md:p-7">
-                <div class="tfi-safety-hero">
-                    <span class="tfi-safety-seal"><i class="fas fa-award"></i> Quality checked daily</span>
-                    <span class="tfi-section-kicker">Your Safety Comes First</span>
-                    <h2 class="mt-4 font-serif text-3xl md:text-4xl text-ghibli-dark">Clean food, careful hands.</h2>
-                    <p class="mx-auto mt-3 max-w-2xl font-sans text-ghibli-brown leading-relaxed">
-                        Fresh ingredients, clean preparation, and a final quality check before every serving.
-                    </p>
-                    <div class="tfi-safety-badges" aria-label="Safety highlights">
-                        <span><i class="fas fa-leaf"></i> Fresh Ingredients</span>
-                        <span><i class="fas fa-hand-sparkles"></i> Clean Handling</span>
-                        <span><i class="fas fa-utensils"></i> Hygienic Kitchen</span>
-                        <span><i class="fas fa-clipboard-check"></i> Final Check</span>
+                <div class="tfi-safety-layout">
+                    <div class="tfi-safety-hero">
+                        <span class="tfi-safety-seal"><i class="fas fa-award"></i> Quality checked daily</span>
+                        <span class="tfi-section-kicker">Your Safety Comes First</span>
+                        <h2 class="mt-4 font-serif text-3xl md:text-4xl text-ghibli-dark">Clean food, careful hands.</h2>
+                        <p class="mt-3 font-sans text-ghibli-brown leading-relaxed">
+                            Every waffle and fries order is prepared with fresh batches, clean tools, and a final
+                            counter check before it reaches you.
+                        </p>
+                        <div class="tfi-safety-promise" aria-label="Preparation promise">
+                            <span><i class="fas fa-clock"></i> Small-batch preparation for better freshness</span>
+                            <span><i class="fas fa-sink"></i> Work surfaces cleaned between busy rounds</span>
+                        </div>
                     </div>
+
+                    <ul class="tfi-safety-list" aria-label="Safety process">
+                        <li>
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <strong>Fresh Ingredients</strong>
+                                <p>Ingredients are checked before prep and stored neatly for service.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-hand-sparkles"></i>
+                            <div>
+                                <strong>Clean Handling</strong>
+                                <p>Serving tools and hands stay clean through each order flow.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-utensils"></i>
+                            <div>
+                                <strong>Hygienic Kitchen</strong>
+                                <p>Prep counters are kept organized, wiped, and ready for the next batch.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clipboard-check"></i>
+                            <div>
+                                <strong>Final Check</strong>
+                                <p>Each serving gets a quick look for quality, packing, and presentation.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tfi-safety-badges" aria-label="Safety highlights">
+                    <span><i class="fas fa-temperature-low"></i> Stored With Care</span>
+                    <span><i class="fas fa-broom"></i> Clean Counter</span>
+                    <span><i class="fas fa-box"></i> Neat Packing</span>
+                    <span><i class="fas fa-heart"></i> Served Fresh</span>
                 </div>
             </div>
         </div>
@@ -3803,7 +3976,7 @@
 
     <!-- Mobile Menu and Billing -->
     <script>
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const heroMenuOpen = document.getElementById('hero-menu-open');
         const billingMenuToggle = document.getElementById('billing-menu-toggle');
         const sideMenu = document.getElementById('side-menu');
         const sideMenuBackdrop = document.getElementById('side-menu-backdrop');
@@ -3821,10 +3994,11 @@
         let billingMode = 'owner';
 
         function setMenuButtonState(isOpen) {
-            [mobileMenuToggle, billingMenuToggle].forEach((button) => {
+            [heroMenuOpen, billingMenuToggle].forEach((button) => {
                 button?.setAttribute('aria-expanded', String(isOpen));
                 button?.querySelector('i')?.classList.toggle('fa-times', isOpen);
-                button?.querySelector('i')?.classList.toggle('fa-bars', !isOpen);
+                button?.querySelector('i')?.classList.toggle('fa-route', !isOpen && button === heroMenuOpen);
+                button?.querySelector('i')?.classList.toggle('fa-bars', !isOpen && button === billingMenuToggle);
             });
         }
 
@@ -3892,7 +4066,7 @@
             }
         }
 
-        mobileMenuToggle?.addEventListener('click', toggleSideMenu);
+        heroMenuOpen?.addEventListener('click', toggleSideMenu);
         billingMenuToggle?.addEventListener('click', toggleSideMenu);
 
         sideMenu?.querySelectorAll('a').forEach((link) => {
@@ -3901,11 +4075,12 @@
             });
         });
 
-        const snackMessages = ["It's super!", "It's tasty!", "It's yummy!"];
+        const snackMessages = ["It's super!", "It's tasty!", "It's yummy!", "It's awesome!"];
         const createSnackBoyScene = (message) => `
             <div class="snack-boy-scene" aria-hidden="true">
                 <div class="snack-boy">
-                    <img src="./materials/foodBoy.png" class="snack-boy-img" alt="">
+                    <img src="./materials/foodBoy1.png" class="snack-boy-img" alt="">
+                    <span class="snack-fries-pack"></span>
                 </div>
                 <div class="snack-super-bubble">${message}</div>
                 <span class="snack-taste-spark"></span>
