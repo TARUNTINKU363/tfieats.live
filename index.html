@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TFI.Co - Yummy Snacks</title>
+    <link rel="icon" type="image/png" href="./materials/TFI-Logo.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -760,6 +761,7 @@
         }
 
         @keyframes snackStepLeft {
+
             0%,
             100% {
                 transform: rotate(18deg);
@@ -771,6 +773,7 @@
         }
 
         @keyframes snackStepRight {
+
             0%,
             100% {
                 transform: rotate(-20deg);
@@ -782,6 +785,7 @@
         }
 
         @keyframes snackEatArm {
+
             0%,
             46% {
                 transform: rotate(-52deg);
@@ -799,6 +803,7 @@
         }
 
         @keyframes snackFriesToMouth {
+
             0%,
             46% {
                 transform: translate(0, 0) rotate(-12deg);
@@ -816,6 +821,7 @@
         }
 
         @keyframes snackBite {
+
             0%,
             54% {
                 height: 4px;
@@ -836,6 +842,7 @@
         }
 
         @keyframes snackBubblePop {
+
             0%,
             58% {
                 opacity: 0;
@@ -855,6 +862,7 @@
         }
 
         @keyframes snackSparkPop {
+
             0%,
             58% {
                 opacity: 0;
@@ -1093,13 +1101,13 @@
             text-shadow: none;
         }
 
-        .cinema-menu-heading > span:first-child {
+        .cinema-menu-heading>span:first-child {
             display: inline-flex;
             align-items: center;
             gap: 10px;
         }
 
-        .cinema-menu-heading > span:first-child::after {
+        .cinema-menu-heading>span:first-child::after {
             content: '';
             width: 42px;
             height: 2px;
@@ -1882,6 +1890,7 @@
         }
 
         @keyframes safetyStripGlow {
+
             0%,
             100% {
                 background-position: 0% 50%;
@@ -1907,6 +1916,7 @@
         }
 
         @keyframes safetySealPulse {
+
             0%,
             100% {
                 transform: translateY(0);
@@ -1920,6 +1930,7 @@
         }
 
         @keyframes safetySealShine {
+
             0%,
             45% {
                 left: -55%;
@@ -1932,6 +1943,7 @@
         }
 
         @keyframes safetyIconPulse {
+
             0%,
             100% {
                 transform: scale(1);
@@ -1950,6 +1962,7 @@
         }
 
         @keyframes safetyIconFloat {
+
             0%,
             100% {
                 transform: translateY(0);
@@ -2575,7 +2588,7 @@
                 flex-basis: 38px;
             }
 
-            .hero-section > .max-w-4xl {
+            .hero-section>.max-w-4xl {
                 box-sizing: border-box;
                 width: 100%;
                 max-width: min(360px, 100%);
@@ -2881,7 +2894,8 @@
     </aside>
 
     <!-- Hero Section -->
-    <section class="hero-section min-h-[82vh] pt-24 pb-6 flex flex-col items-center justify-center relative overflow-hidden">
+    <section
+        class="hero-section min-h-[82vh] pt-24 pb-6 flex flex-col items-center justify-center relative overflow-hidden">
         <!-- Background Elements (Parallax Clouds) -->
         <div class="absolute top-20 left-10 opacity-30 animate-float" style="animation-duration: 8s;">
             <i class="fas fa-cloud text-6xl text-white"></i>
@@ -3278,7 +3292,8 @@
                     <div class="tfi-safety-hero">
                         <span class="tfi-safety-seal"><i class="fas fa-award"></i> Quality checked daily</span>
                         <span class="tfi-section-kicker">Your Safety Comes First</span>
-                        <h2 class="mt-4 font-serif text-3xl md:text-4xl text-ghibli-dark">Clean food, careful hands.</h2>
+                        <h2 class="mt-4 font-serif text-3xl md:text-4xl text-ghibli-dark">Clean food, careful hands.
+                        </h2>
                         <p class="mt-3 font-sans text-ghibli-brown leading-relaxed">
                             Every waffle and fries order is prepared with fresh batches, clean tools, and a final
                             counter check before it reaches you.
@@ -3391,6 +3406,12 @@
                             Billing</h2>
                     </div>
                     <div class="billing-header-actions">
+                        <button type="button" id="billing-reset"
+                            class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-bold text-ghibli-brown shadow-sm ring-1 ring-[#E6A863]/45 transition hover:bg-[#FFFBEB] hover:text-ghibli-red"
+                            aria-label="Reset billing calculation">
+                            <i class="fas fa-rotate-left"></i>
+                            Reset
+                        </button>
                         <button type="button" id="billing-dialog-close"
                             class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-ghibli-brown px-4 text-sm font-bold text-white transition hover:bg-ghibli-red"
                             aria-label="Go back">
@@ -4175,6 +4196,7 @@
         const billingSummary = document.getElementById('billing-summary');
         const billingCount = document.getElementById('billing-count');
         const billingTotal = document.getElementById('billing-total');
+        const billingReset = document.getElementById('billing-reset');
         const billingSubmit = document.getElementById('billing-submit');
         const billingShowQr = document.getElementById('billing-show-qr');
         const billingKicker = document.getElementById('billing-kicker');
@@ -4416,6 +4438,12 @@
             Object.keys(quantities).forEach((key) => delete quantities[key]);
             activeOrder = null;
             invoiceAlreadyDownloaded = false;
+            activeBillingTab = 'waffles';
+            billingPage = 1;
+            if (billingSearch) billingSearch.value = '';
+            document.querySelectorAll('.billing-tab').forEach((tab) => {
+                tab.setAttribute('aria-selected', String(tab.dataset.billingTab === activeBillingTab));
+            });
             if (orderIdInput) orderIdInput.value = getNextOrderId();
             renderBilling();
         }
@@ -4590,6 +4618,7 @@
             resetBilling();
         }
 
+        billingReset?.addEventListener('click', resetBilling);
         billingSubmit?.addEventListener('click', submitAndDownloadInvoice);
         billingShowQr?.addEventListener('click', () => {
             invoiceAlreadyDownloaded = false;
